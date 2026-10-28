@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маргарита Спрыгина | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0d0f18;
+            --card-bg: #16192b;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #c084fc;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .glow-sphere {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(13, 15, 24, 0) 70%);
+            top: -100px;
+            left: -100px;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 30%, var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--accent-secondary);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .contacts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contacts a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .contacts a:hover {
+            color: var(--accent-secondary);
+        }
+
+        section {
+            margin: 50px 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        h2 i {
+            color: var(--accent-primary);
+        }
+
+        .about-text {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+        }
+
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--accent-secondary);
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-secondary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #7c3aed;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .container { padding: 20px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-sphere"></div>
+
+    <div class="container">
+        <header>
+            <h1>Спрыгина Маргарита</h1>
+            <p>Junior Backend & Web Developer</p>
+            <div class="contacts">
+                <a href="tel:+375295414797"><i class="fas fa-phone"></i> +375 29 541 47 97</a>
+                <a href="https://t.me/urfirstdream" target="_blank"><i class="fab fa-telegram"></i> @urfirstdream</a>
+                <a href="mailto:spryginamp@gmail.com"><i class="fas fa-envelope"></i> spryginamp@gmail.com</a>
+                <a href="https://github.com/npecod3r" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </header>
+
+        <section>
+            <h2><i class="fas fa-user-circle"></i> Обо мне</h2>
+            <div class="about-text">
+                Студентка 2 курса Минского радиотехнического колледжа (МРК) по специальности «Разработка и сопровождение программного обеспечения». Имею практический опыт создания адаптивных сайтов на заказ, разработки скриптов и Telegram-ботов с базой данных на Python, а также хорошую алгоритмическую базу на C++. Целенаправленно развиваюсь в сторону Java Backend и серверной разработки. Владею английским языком на уровне B2.
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-code"></i> Стек технологий</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python & SQL</h3>
+                    <p>aiogram 3.x, FSM, SQLite3, обработка сценариев</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>Frontend</h3>
+                    <p>HTML5, CSS3, Flexbox, Responsive Design</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>C++</h3>
+                    <p>Алгоритмы, структуры данных, консольные программы</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-git-alt"></i>
+                    <h3>Инструменты</h3>
+                    <p>Git, GitHub, VS Code</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-laptop-code"></i> Проекты</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Interactive Telegram Bot (Python)</div>
+                        <p class="project-desc">Telegram-бот с пошаговой регистрацией пользователей через FSM, валидацией данных, сохранением профилей в базу SQLite и интерактивным Inline-меню.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">aiogram 3.x</span>
+                            <span class="tag">SQLite3</span>
+                            <span class="tag">FSM</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/npecod3r/tg-bot-example/blob/main/bot.py" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> Посмотреть bot.py</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Коммерческий Лендинг (Web)</div>
+                        <p class="project-desc">Современная посадочная страница с адаптивной версткой под мобильные устройства, современными CSS-сетками и стилизацией.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">Flexbox</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/npecod3r/landing-page-example/blob/main/index.html" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> Посмотреть index.html</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Алгоритмический модуль (C++)</div>
+                        <p class="project-desc">Консольная программа на C++ для анализа данных: работа с динамическими массивами, указателями, вычисление статистических параметров.</p>
+                        <div class="project-tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">Algorithms</span>
+                            <span class="tag">Pointers</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/npecod3r/cpp-algorithms-example/blob/main/main.cpp" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> Посмотреть main.cpp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Маргарита Спрыгина • Минск, Беларусь</p>
+        </footer>
+    </div>
+</body>
+</html>
